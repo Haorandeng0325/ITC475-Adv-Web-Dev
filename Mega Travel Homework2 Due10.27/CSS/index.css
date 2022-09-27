@@ -1,0 +1,229 @@
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+span{
+    font-family: 'iconfont';
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+    
+  }
+
+/* 针对手机： */
+[class*="col-"] {
+    width: 100%;
+  }
+
+  @media only screen and (min-width: 600px) {
+    /* 针对ipad： */
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+  }
+
+  @media only screen and (min-width: 768px) {
+    /* 针对桌面desktop： */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+  }
+
+  
+
+/* Header 头部 */
+.header{
+    position:relative;
+    overflow: hidden;
+    height: 180px;
+    background-color: #add8e6;
+    border-bottom: solid 20px #d3d3d3;
+    
+}
+
+.header img{
+    position: absolute;
+    left: 20px;
+    top: 10px;
+}
+
+.header .time{
+   text-align: center;
+}
+
+.header span{
+    display: block;
+    text-align: center;
+}
+
+.header p{
+    text-align: center;
+}
+
+/* 导航 nav */
+.nav{
+    width: auto;
+    height: 30px;
+    /* 有更好的方法让div居中吗？ */
+    margin-left: 43%; 
+    text-align: center;
+    padding-top: 15px;
+}
+ .nav a{
+    text-decoration: none;
+   
+}
+    
+.nav span{
+    float: left;
+    margin-left: 12.5px;
+    margin-right: 12.5px;
+    transition: transform .5s;
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+}
+
+
+.nav a:hover span{
+    color: #ffa500;
+    transform: translateY(-10px);
+}
+
+/* 简介 intro */
+.intro{
+    height: 120px;
+    margin-left: 13px;
+    margin-bottom: 7px;
+}
+.intro h2{
+    padding-right: 50%;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.intro p{
+    line-height: 90%;
+    font-size: 17px;
+}
+
+/* pics 图片简介 */
+
+.pics{
+    padding-left: 1px;
+    overflow: hidden;
+}
+
+.pics  img{
+    max-width: 100%;
+    width: 100%;
+    height: auto;   
+}
+
+.pics .row .ma{
+    /* 不要给每个图片的盒子加宽高才能解决布局混乱 */
+   /* width: 380px;  */
+    /* height: 450px; */
+    padding: 10px;
+    border: 1px solid black;
+    /* 使背景图片hover的时候慢慢变化，和transform不一样 */
+    transition:background-color 0.5s linear
+}
+
+.pics h2{
+    font-size: medium;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.pics .price{
+    font-size: small;
+    color: gray;
+}
+.pics .pay span{
+    font-weight: 800;
+}
+.pics .saving{
+    color: green;
+}
+
+.pics  .ma:hover{
+    background-color: black;
+    color: white;
+}
+
+/* 尾部版权区域 */
+.footer {
+    margin-top: 20px;
+    padding-left: 50px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: black;
+    
+}
+  
+
+@media only screen and (max-width: 600px) {
+    .nav {
+      background-color: black;
+      margin-top: 10px;
+      margin-left: 0.1%; 
+      margin-bottom: 8px;
+      padding-left: 23%;
+      padding-top: 8px;
+    }
+    .nav span {
+        color: white;
+    }
+
+    .intro{
+        margin-bottom: 95px;
+    }
+    .pics ul li{
+     width: 470px;
+    }
+
+    .header img{
+        position: absolute;
+        left: 90px;
+        top: 10px;
+    }
+
+    .nav a:hover span{
+        color: white;
+        transform: translateY(0px);
+    }
+  }
+
+
+
+
+  
