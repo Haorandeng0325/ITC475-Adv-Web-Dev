@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/status.css">
+    <link rel="stylesheet" href="./font_3729355_3rxlyligjz3/iconfont.css">
+    <title>Smart Home Status</title>
+</head>
+<body>
+    <div>
+         <!-- 头部区域 -->
+         <div class="header">
+            <h2 class="welcome">Welcome to Smart Home Status !</h2>
+            <h3 class="jump"><a href="./index.html">Click here to return to the panel </a></h3>
+            <button class="runbutton">Run</button> <span id="p2">Current time:</span>
+            <div id="p1">.</div>
+           <img src="./pics/13.jpg" alt="">
+        </div>
+        <!-- 中间区域 banner -->
+        <div class="banner">
+            <!-- <div class="en">
+            <span class="tb"> &#xe674; :<span> <br><br>
+            <span class="tb"> &#xe635;:</span> <br><br>
+            <span class="tb"> &#xe61b;:</span> <br><br>
+            <span class="tb"> &#xe614;:</span> <br><br>
+            <span class="tb">&#xe6a4;:</span> <br><br>
+            <span class="tb">&#xe601;:</span> <br><br>
+            <span class="tb"> &#xe604;:</span> <br><br>
+            <span class="tb"> &#xe611;:</span> <br><br>
+            <span class="tb"> &#xe612;:</span> <br><br>
+            <span class="tb"> &#xe600;:</span> <br><br>
+            <span class="tb"> &#xe613;:</span> <br><br>
+        </div> -->
+    </div>
+        <!-- 尾部版权区域 footer  -->
+        <div class="footer">
+            <div class="wrapper">
+                <div class="left">
+                   
+                    <p>
+                        Copyright  2010-2022 Smart Home Inc. All Rights Reserved</p >
+                   
+                </div>
+                <div class="right">
+                    <dl>
+                        <dt>Partner companies:</dt>
+                        <dd><a href="https://www.usa.philips.com/">Philips</ a></dd>
+                        <dd><a href="https://www.ge.com/"">General Electric (GE)</ a></dd>
+                    </dl>
+                    <dl>
+                        <dt>Contact Support:</dt>
+                        <dd><a href="#">Email</ a></dd>
+                        <dd><a href="#"">Phone Call</ a></dd>
+                    </dl>
+                    <dl>
+                        <dt>Languages:</dt>
+                        <dd><a href="#">Español</ a></dd>
+                        <dd><a href="#"">Français</ a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+
+
+        play();
+//function play 与后面的setInterval配合使用（重要）
+function play(){
+var date = new Date();
+	var current_time = date.getHours().toString().padStart(2,'0')+":"+date.getMinutes().toString().padStart(2,'0')+":"+ date.getSeconds().toString().padStart(2,'0');
+	document.getElementById("p1").innerHTML = current_time;}
+    setInterval(play,1000);//每一秒执行一次
+
+    let runButton=document.querySelector('.runbutton')
+    let pp1=document.querySelector('#p1')
+    let pp2=document.querySelector('#p2')
+    runButton.addEventListener('click',function(){ 
+      pp1.style.display='block'
+      pp2.style.display='block'
+
+
+
+    //   const devices = [{shebei:'Living Room Lamp', icons:'&#xe612;'},{shebei:'Bedroom # 1 Desk Lamp',icons:'&#xe600;'},{shebei: 'Bedroom # 2 Floor Lamp',icons:'&#xe613;'}, {shebei:'Bathroom Fan',icons:'&#xe604;'}, {shebei:'Washer',icons:'&#xe635;'}, {shebei:'Dryer',icons:'&#xe674;'}, {shebei:'Front Door',icons:'&#xe614;'}, {shebei:'Back Door',icons:'&#xe61b;'}, {shebei:'Garage Door', icons:'&#xe6a4;'},{shebei:'Kitchen Fan',icons:'&#xe601;'}, {shebei:'Dining Room Light',icons:'&#xe611;'}]
+// const icons=['&#xe612;','&#xe600;','&#xe613;','&#xe604;','&#xe635;','&#xe674;','&#xe614;','&#xe61b;','&#xe6a4;','&#xe601;','&#xe611;']
+    // devices的数据
+      const devices = ['Living Room Lamp','Bedroom # 1 Desk Lamp', 'Bedroom # 2 Floor Lamp', 'Bathroom Fan', 'Washer', 'Dryer', 'Front Door', 'Back Door', 'Garage Door', 'Kitchen Fan', 'Dining Room Light']
+        let html = ''
+         for (let i = 0; i < devices.length; i++) {
+
+            const ret = getStatus(devices[i])
+             html += `<span>${ret.device} :</span><span> turned ${ret.status}</span><br><br>`
+            
+        }
+        document.querySelector('.banner').innerHTML = html
+        
+        function getStatus(device) {
+            const deviceObj = JSON.parse(localStorage.getItem(device))
+            let status = 'off'
+            if (deviceObj != null) {
+                let date= new Date()
+                if(date.getTime()-new Date(deviceObj.sTime).getTime()>=0 && new Date(deviceObj.eTime).getTime()-date.getTime()>=0){
+                    status = 'on'
+                } else {
+                    localStorage.removeItem(device)
+                }
+            }
+
+           
+            return {
+                device, 
+                status
+            }
+        }
+
+
+
+    })
+
+
+
+
+
+        // let newSelect=localStorage.getItem('savedselect')
+        // let newSTime=localStorage.getItem('stime')
+        // let newETime=localStorage.getItem('etime')
+        // window.addEventListener("storage", function(e) {
+        //   console.log(e)
+        //     });
+           
+        // 得到当前的时间：运用时间戳 getTime()
+        // let date= new Date()
+
+        // // console.log(date.getTime())
+        // // console.log(new Date(newSTime).getTime())
+        // // console.log(new Date(newETime).getTime())
+        // if (newSelect==="dryer"){
+        //     let hgj= document.querySelector('.dr')
+        // if(date.getTime()-new Date(newSTime).getTime()>=0 && new Date(newETime).getTime()-date.getTime()>=0){
+            
+        //  hgj.innerHTML='The device is turned on ✔'
+        //  hgj.style.color='red'
+        // }
+        // else{
+        //     hgj.innerHTML='The device is turned off'
+        // }
+        // }
+
+        // if (newSelect==="washer"){
+        //     let xyj= document.querySelector('.wa')
+        // if(date.getTime()-new Date(newSTime).getTime()>=0 && new Date(newETime).getTime()-date.getTime()>=0){
+            
+        //  xyj.innerHTML='The device is turned on ✔'
+        //  xyj.style.color='red'
+        // }
+        // else{
+        //     xyj.innerHTML='The device is turned off'
+        // }
+        // }
+
+        // if (newSelect==="lrlamp"){
+        //     let living= document.querySelector('.li')
+        // if(date.getTime()-new Date(newSTime).getTime()>=0 && new Date(newETime).getTime()-date.getTime()>=0){
+            
+        //  living.innerHTML='The device is turned on ✔'
+        //  living.style.color='red'
+        // }
+        // else{
+        //     living.innerHTML='The device is turned off'
+        // }
+        // }
+
+        // if (newSelect==="bdlamp"){
+        //     let bed1= document.querySelector('.be1')
+        // if(date.getTime()-new Date(newSTime).getTime()>=0 && new Date(newETime).getTime()-date.getTime()>=0){
+            
+        //  bed1.innerHTML='The device is turned on ✔'
+        //  bed1.style.color='red'
+        // }
+        // else{
+        //     bed1.innerHTML='The device is turned off'
+        // }
+        // }
+
+        // if (newSelect==="bflamp"){
+        //     let bed2= document.querySelector('.be2')
+        // if(date.getTime()-new Date(newSTime).getTime()>=0 && new Date(newETime).getTime()-date.getTime()>=0){
+            
+        //  bed2.innerHTML='The device is turned on ✔'
+        //  bed2.style.color='red'
+        // }
+        // else{
+        //     bed2.innerHTML='The device is turned off'
+        // }
+        // }
+
+        // if (newSelect==="bathfan"){
+        //     let bath= document.querySelector('.ba')
+        // if(date.getTime()-new Date(newSTime).getTime()>=0 && new Date(newETime).getTime()-date.getTime()>=0){
+            
+        //  bath.innerHTML='The device is turned on ✔'
+        //  bath.style.color='red'
+        // }
+        // else{
+        //     bath.innerHTML='The device is turned off'
+        // }
+        // }
+
+        // if (newSelect==="frontdoor"){
+        //     let front= document.querySelector('.fr')
+        // if(date.getTime()-new Date(newSTime).getTime()>=0 && new Date(newETime).getTime()-date.getTime()>=0){
+            
+        //     front.innerHTML='The device is turned on ✔'
+        //     front.style.color='red'
+        // }
+        // else{
+        //     front.innerHTML='The device is turned off'
+        // }
+        // }
+
+        // if (newSelect==="backdoor"){
+        //     let back= document.querySelector('.badoor')
+        // if(date.getTime()-new Date(newSTime).getTime()>=0 && new Date(newETime).getTime()-date.getTime()>=0){
+            
+        //     back.innerHTML='The device is turned on ✔'
+        //     back.style.color='red'
+        // }
+        // else{
+        //     back.innerHTML='The device is turned off'
+        // }
+        // }
+
+        // if (newSelect==="garagedoor"){
+        //     let ga= document.querySelector('.ga')
+        // if(date.getTime()-new Date(newSTime).getTime()>=0 && new Date(newETime).getTime()-date.getTime()>=0){
+            
+        //     ga.innerHTML='The device is turned on ✔'
+        //     ga.style.color='red'
+        // }
+        // else{
+        //     ga.innerHTML='The device is turned off'
+        // }
+        // }
+
+        // if (newSelect==="kitchenfan"){
+        //     let kifan= document.querySelector('.ki')
+        // if(date.getTime()-new Date(newSTime).getTime()>=0 && new Date(newETime).getTime()-date.getTime()>=0){
+            
+        //     kifan.innerHTML='The device is turned on ✔'
+        //     kifan.style.color='red'
+        // }
+        // else{
+        //     kifan.innerHTML='The device is turned off'
+        // }
+        // }
+
+        // if (newSelect==="drlight"){
+        //     let drl= document.querySelector('.dr')
+        // if(date.getTime()-new Date(newSTime).getTime()>=0 && new Date(newETime).getTime()-date.getTime()>=0){
+            
+        //     drl.innerHTML='The device is turned on ✔'
+        //     drl.style.color='red'
+        // }
+        // else{
+        //     drl.innerHTML='The device is turned off'
+        // }
+        // }
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./font_3729355_3rxlyligjz3/iconfont.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Smart Home Panel</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div>
+        <!-- 头部区域 -->
+        <div class="header">
+            <h2 class="welcome">Welcome to Smart Home Panel !</h2>
+            <h3 class="jump"><a href="./status.html">Click here to check device status </a></h3>
+           <img src="./pics/13.jpg" alt="">
+        </div>
+        <!-- banner中间区域 -->
+        <div class="banner">
+            <!-- 下拉菜单 -->
+            <div class="listbox">
+                <form action="">
+               <b> Choose Device:</b>
+                <select class="devices">
+                <option value="livingroomlamp">Living Room Lamp</option>
+                <option value="bedroomdesklamp">Bedroom # 1 Desk Lamp</option>
+                <option value="bedroomfloorlamp">Bedroom # 2 Floor Lamp</option>
+                <option value="bathfan">Bathroom Fan</option>
+                <option value="washer">Washer</option>
+                <option value="dryer">Dryer</option>
+                <option value="frontdoor">Front Door</option>
+                <option value="backdoor">Back Door</option>
+                <option value="garagedoor">Garage Door</option>
+                <option value="kitchenfan">Kitchen Fan</option>
+                <option value="diningroomlight">Dining Room Light</option>
+            </select>
+           <!-- 时间选择 -->
+           <br><br>
+          <span><b>Starting Time:</b> </span> <input class="stime" type="datetime-local"required style="width: 300px;">
+          <br><br>
+          <span><b>Ending Time:&nbsp;</b></span> <input class="etime" type="datetime-local" required style="width: 300px;">
+            <!-- 提交按钮 -->
+            <br><br>
+            &nbsp;&nbsp;<button style="width: 200px;">Submit</button> &nbsp;&nbsp;
+            <input type="reset" style="width: 200px;">
+        </form>
+    </div>
+        </div>
+
+        <!-- footer 尾部区域 -->
+        <div class="footer">
+            <div class="wrapper">
+                <div class="left">
+                <p>Copyright  2010 - 2022 Smart Home Inc. All Rights Reserved</p >
+                    
+                </div>
+                <div class="right">
+                    <dl>
+                        <dt>Partner companies:</dt>
+                        <dd><a href="https://www.usa.philips.com/">Philips</ a></dd>
+                        <dd><a href="https://www.ge.com/"">General Electric (GE)</ a></dd>
+                    </dl>
+                    <dl>
+                        <dt>Contact Support:</dt>
+                        <dd><a href="#">Email</ a></dd>
+                        <dd><a href="#"">Phone Call</ a></dd>
+                    </dl>
+                    <dl>
+                        <dt>Languages:</dt>
+                        <dd><a href="#">Español</ a></dd>
+                        <dd><a href="#"">Français</ a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+    
+
+        // !获取元素，提交按钮
+        let sButton=document.querySelector('button')
+        //提交按钮的事件监听
+        sButton.addEventListener('click',function (e){
+
+          //!获取元素 下拉菜单
+          let selector=document.querySelector('.devices')
+        //  下拉菜单： 拿到选中项的索引： selectedIndex代表的是你所选中项的index
+          let index=selector.selectedIndex ;
+          // 拿到选中项options的value 语法：selector.options[index].value
+          let mySelect=selector.options[index].text
+          //! 获取元素：开始时间，并且赋值给sTime,并且储存sTime在本地储存中。
+          let sTime=document.querySelector('.stime').value
+
+           //! 获取元素：结束时间，并且赋值给eTime,并且储存eTime在本地储存中。
+           let eTime=document.querySelector('.etime').value
+            
+           localStorage.setItem(mySelect, JSON.stringify({ sTime, eTime }))
+
+
+        })
+      
+    </script>
+</body>
+</html>
