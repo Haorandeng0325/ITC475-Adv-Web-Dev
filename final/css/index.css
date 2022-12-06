@@ -1,0 +1,127 @@
+
+        *{
+            padding: 0;
+            margin: 0;
+            
+            text-decoration: none;
+        }
+
+        body{
+            background-color: white;
+        }
+        .header{
+           text-align: center;
+           background:url('../img/header.jpeg');
+           height: 380px;
+           background-repeat: no-repeat;
+           background-position: center;
+        }
+
+        .wordH{
+            font-size: larger;
+            color: white;
+            padding-top: 320px;
+        }
+
+
+        .banner{
+            display: flex;
+            justify-content: center;
+        }
+
+        .gameplace{
+           position: relative;
+           background:url('../img/racetrack.webp') no-repeat;
+           background-size: contain;
+           height: 635px;
+           width: 1200px;
+           margin: 0 auto;
+
+        }
+
+        .gameplace img{
+            width: 150px;
+        }
+
+        .gameplace img:nth-child(1) {
+            position: absolute;
+            left: 0;
+            top: 50px;
+        }   
+        .gameplace img:nth-child(2) {
+            position: absolute;
+            left: 0;
+            top: 250px;
+
+        }   
+        .num{
+        
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 300px;
+            color: red;
+        }
+
+        .cars{
+            
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+            width: 520px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .cars div.active {
+            border: 10px solid red;
+        }
+
+        .cars div{
+            line-height: 100px;
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+            margin-right: 10px;
+        }
+
+         .cars p{
+            width: 400px;
+            text-align: center;
+         }
+
+
+        .cars img{
+            width: 50px;
+        }
+        
+
+        .result {
+            display: none;
+            width: 520px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            z-index: 10000;
+            text-align: center;
+            font-size: 50px;
+            color: red;
+        }
+
+        .result span{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .result > div img{
+            width: 300px;
+        }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race Index</title>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- header  -->
+    <div class="header">
+        <div class="wordH">
+            <p style="font-size: 26px;"><strong>Welcome to Disney© Cars Racing Game!<strong></p>
+            <a href="data.php" style="color: maroon;">Race Record</a>
+        </div>
+
+    </div>
+    <!-- 红绿灯 -->
+    <div class="banner">
+        <div class="redlight">
+            <img src="./img/redlight.png" alt="">
+        </div>
+        <div class="greenlight" style="display: none;">
+            <img src="./img/greenlight.png" alt="">
+        </div>
+    </div>
+    <!-- 游戏 -->
+
+    <div class="gameplace">
+        
+         <!-- 赛车 -->
+         <!-- <img src="./img/black.png" alt="player1" > -->
+         <!-- <img src="./img/red.png" alt="player1" > -->
+    </div>
+
+
+    <div class="result">
+        <span>X</span>
+        <div>
+            <img class="car" src="./img/black.png" /> 
+        </div>
+        Win!
+    </div>
+
+    <div class="cars">
+        <p>Click Two Cars!</p>
+        <div><img src="./img/black.png" alt="player1" data-src="black" data-index="0"></div>
+        <div><img src="./img/red.png" alt="player2" data-src="red" data-index="1"></div>
+        <div><img src="./img/brown.png" alt="player3" data-src="brown"  data-index="2"></div>
+        <div><img src="./img/blue.png" alt="player4" data-src="blue"  data-index="3"></div>
+        <p><button id="startBtn">Start</button></p>
+   </div>
+
+   <div class="num">
+   </div>
+
+   <script src="./js/index.js"></script>
+
+</body>
+
+</html>
